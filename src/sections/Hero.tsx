@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimate, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/Button";
@@ -11,22 +11,25 @@ import terrabiteExample1Image from "@/assets/images/logo.png";
 import terrabiteExample2Image from "@/assets/images/logo.png";
 
 export default function Hero() {
-  // Animation controllers for images and pointers
+  // Reference for drag constraints
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Animation controllers (useAnimate) for images/pointers
   const [leftDesignScope, leftDesignAnimate] = useAnimate();
   const [leftPointerScope, leftPointerAnimate] = useAnimate();
   const [rightDesignScope, rightDesignAnimate] = useAnimate();
   const [rightPointerScope, rightPointerAnimate] = useAnimate();
 
-  // State for the confirmation message
+  // State for the newsletter confirmation message
   const [confirmation, setConfirmation] = useState("");
 
   useEffect(() => {
-    // Animate left image from further off-screen into view
+    // Animate left image
     leftDesignAnimate([
       [leftDesignScope.current, { opacity: 1 }, { duration: 0.5 }],
       [leftDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
     ]);
-    // Animate left pointer along with the image and then freeze in place
+    // Animate left pointer
     leftPointerAnimate([
       [leftPointerScope.current, { opacity: 1 }, { duration: 0.5 }],
       [leftPointerScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
@@ -36,12 +39,13 @@ export default function Hero() {
         { duration: 0.5, ease: "easeInOut" },
       ],
     ]);
-    // Animate right image with delay from further off-screen
+
+    // Animate right image
     rightDesignAnimate([
       [rightDesignScope.current, { opacity: 1 }, { duration: 0.5, delay: 1.5 }],
       [rightDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
     ]);
-    // Animate right pointer along with the image and then freeze in place
+    // Animate right pointer
     rightPointerAnimate([
       [rightPointerScope.current, { opacity: 1 }, { duration: 0.5, delay: 1.5 }],
       [rightPointerScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
@@ -51,20 +55,30 @@ export default function Hero() {
         { duration: 0.5, ease: "easeInOut" },
       ],
     ]);
-  }, [leftDesignAnimate, leftPointerAnimate, rightDesignAnimate, rightPointerAnimate]);
+  }, [
+    leftDesignAnimate,
+    leftPointerAnimate,
+    rightDesignAnimate,
+    rightPointerAnimate,
+  ]);
 
   return (
     <section
       className="relative py-20 bg-black text-white overflow-x-clip"
       style={{ cursor: `url(${cursorYouImage.src}), auto` }}
     >
-      <div className="container relative mx-auto px-4 md:px-6" style={{ minHeight: "60vh" }}>
+      <div
+        ref={containerRef}
+        className="container relative mx-auto px-4 md:px-6"
+        style={{ minHeight: "50vh" }}
+      >
         {/* LEFT DRAGGABLE IMAGE */}
         <motion.div
           ref={leftDesignScope}
-          initial={{ opacity: 0, x: -200, y: 100 }}
+          initial={{ opacity: 0, x: -300, y: 150 }}
+          // Note: remove animate={...} - we use imperative animations above
           drag
-          dragConstraints={".container"}
+          dragConstraints={containerRef}
           dragElastic={0.3}
           className="absolute -left-32 top-16 hidden lg:block"
         >
@@ -75,10 +89,11 @@ export default function Hero() {
             className="w-40 h-auto"
           />
         </motion.div>
+
         {/* LEFT POINTER */}
         <motion.div
           ref={leftPointerScope}
-          initial={{ opacity: 0, x: -200, y: 100 }}
+          initial={{ opacity: 0, x: -300, y: 150 }}
           className="absolute hidden lg:block"
           style={{ top: "20%", left: "5%" }}
         >
@@ -88,9 +103,9 @@ export default function Hero() {
         {/* RIGHT DRAGGABLE IMAGE */}
         <motion.div
           ref={rightDesignScope}
-          initial={{ opacity: 0, x: 200, y: 100 }}
+          initial={{ opacity: 0, x: 300, y: 150 }}
           drag
-          dragConstraints={".container"}
+          dragConstraints={containerRef}
           dragElastic={0.3}
           className="absolute -right-64 top-0 hidden lg:block"
         >
@@ -101,10 +116,11 @@ export default function Hero() {
             className="w-48 h-auto"
           />
         </motion.div>
+
         {/* RIGHT POINTER */}
         <motion.div
           ref={rightPointerScope}
-          initial={{ opacity: 0, x: 200, y: 100 }}
+          initial={{ opacity: 0, x: 300, y: 150 }}
           className="absolute hidden lg:block"
           style={{ top: "25%", right: "5%" }}
         >
@@ -119,7 +135,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-black font-semibold"
           >
-            🔥 $7.5M seed round raised
+            🌱 Sequestering Carbon, 1 Brick @ a Time
           </motion.div>
         </div>
 
@@ -142,7 +158,8 @@ export default function Hero() {
           className="text-center text-lg md:text-xl text-white/60 mt-8 max-w-2xl mx-auto leading-relaxed"
         >
           Terrabite transforms food waste into carbon-sequestering concrete.
-          Together, we can lower emissions, reduce costs, and empower greener construction.
+          Together, we can lower emissions, reduce costs, and empower greener
+          construction.
         </motion.p>
 
         {/* Email Form */}
@@ -150,8 +167,9 @@ export default function Hero() {
           onSubmit={(e) => {
             e.preventDefault();
             const form = e.target as HTMLFormElement;
-            const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-            // Insert your newsletter subscription logic here (e.g., API call)
+            const email = (form.elements.namedItem("email") as HTMLInputElement)
+              .value;
+            // Insert your newsletter subscription logic here
             console.log("Subscribing email:", email);
             setConfirmation("Thank you for subscribing!");
             form.reset();
@@ -184,6 +202,7 @@ export default function Hero() {
         <AnimatePresence>
           {confirmation && (
             <motion.div
+              key="confirmation"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
