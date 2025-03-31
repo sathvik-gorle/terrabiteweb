@@ -14,7 +14,7 @@ export default function Hero() {
   // Reference for drag constraints
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Animation controllers (useAnimate) for images/pointers
+  // Animation controllers for images/pointers
   const [leftDesignScope, leftDesignAnimate] = useAnimate();
   const [leftPointerScope, leftPointerAnimate] = useAnimate();
   const [rightDesignScope, rightDesignAnimate] = useAnimate();
@@ -24,12 +24,12 @@ export default function Hero() {
   const [confirmation, setConfirmation] = useState("");
 
   useEffect(() => {
-    // Animate left image
+    // Animate left image from further off-screen into view
     leftDesignAnimate([
       [leftDesignScope.current, { opacity: 1 }, { duration: 0.5 }],
       [leftDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
     ]);
-    // Animate left pointer
+    // Animate left pointer along with the image then freeze in place
     leftPointerAnimate([
       [leftPointerScope.current, { opacity: 1 }, { duration: 0.5 }],
       [leftPointerScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
@@ -40,12 +40,12 @@ export default function Hero() {
       ],
     ]);
 
-    // Animate right image
+    // Animate right image (delayed) from further off-screen into view
     rightDesignAnimate([
       [rightDesignScope.current, { opacity: 1 }, { duration: 0.5, delay: 1.5 }],
       [rightDesignScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
     ]);
-    // Animate right pointer
+    // Animate right pointer along with the image then freeze
     rightPointerAnimate([
       [rightPointerScope.current, { opacity: 1 }, { duration: 0.5, delay: 1.5 }],
       [rightPointerScope.current, { x: 0, y: 0 }, { duration: 0.5 }],
@@ -69,14 +69,13 @@ export default function Hero() {
     >
       <div
         ref={containerRef}
-        className="container relative mx-auto px-4 md:px-6"
+        className="container relative mx-auto px-4 md:px-6 flex flex-col items-center"
         style={{ minHeight: "50vh" }}
       >
-        {/* LEFT DRAGGABLE IMAGE */}
+        {/* LEFT DRAGGABLE IMAGE (only visible on lg and up) */}
         <motion.div
           ref={leftDesignScope}
           initial={{ opacity: 0, x: -300, y: 150 }}
-          // Note: remove animate={...} - we use imperative animations above
           drag
           dragConstraints={containerRef}
           dragElastic={0.3}
@@ -100,7 +99,7 @@ export default function Hero() {
           <Pointer name="Israel" />
         </motion.div>
 
-        {/* RIGHT DRAGGABLE IMAGE */}
+        {/* RIGHT DRAGGABLE IMAGE (only visible on lg and up) */}
         <motion.div
           ref={rightDesignScope}
           initial={{ opacity: 0, x: 300, y: 150 }}
@@ -128,12 +127,12 @@ export default function Hero() {
         </motion.div>
 
         {/* Banner */}
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-black font-semibold"
+            className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-black font-semibold text-center"
           >
             🌱 Sequestering Carbon, 1 Brick @ a Time
           </motion.div>
@@ -144,7 +143,7 @@ export default function Hero() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-center mt-6 max-w-4xl mx-auto leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-center mt-6 max-w-4xl mx-auto leading-tight"
         >
           Building a Cleaner Future, One{" "}
           <span className="text-lime-400">Biochar Brick</span> at a Time
@@ -155,7 +154,7 @@ export default function Hero() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="text-center text-lg md:text-xl text-white/60 mt-8 max-w-2xl mx-auto leading-relaxed"
+          className="text-center text-base sm:text-lg md:text-xl text-white/60 mt-4 max-w-2xl mx-auto leading-relaxed"
         >
           Terrabite transforms food waste into carbon-sequestering concrete.
           Together, we can lower emissions, reduce costs, and empower greener
@@ -169,7 +168,7 @@ export default function Hero() {
             const form = e.target as HTMLFormElement;
             const email = (form.elements.namedItem("email") as HTMLInputElement)
               .value;
-            // Insert your newsletter subscription logic here
+            // Insert your newsletter subscription logic here (e.g., API call)
             console.log("Subscribing email:", email);
             setConfirmation("Thank you for subscribing!");
             form.reset();
@@ -179,7 +178,7 @@ export default function Hero() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center border border-white/15 rounded-full p-2 mt-8 max-w-lg mx-auto"
+          className="flex flex-col sm:flex-row items-center border border-white/15 rounded-full p-2 mt-8 max-w-lg w-full mx-auto"
         >
           <input
             name="email"

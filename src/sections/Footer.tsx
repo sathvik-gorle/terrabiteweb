@@ -14,8 +14,8 @@ export default function Footer() {
     <footer className="px-8 py-12 bg-black text-white">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <Image src={logoImage} alt="Knights Haven Logo" width={40} height={40} />
-          <span className="text-lg font-semibold">Knights Haven</span>
+          <Image src={logoImage} alt="Terrabite Logo" width={40} height={40} />
+          <span className="text-lg font-semibold">Terrabite</span>
         </div>
 
         <nav className="flex flex-wrap justify-center gap-6 text-sm text-white/60 hover:[&>a:hover]:text-white">
