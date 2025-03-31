@@ -1,6 +1,6 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { motion, useAnimate, animate, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useAnimate, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/Button";
 import Pointer from "@/components/Pointer";
