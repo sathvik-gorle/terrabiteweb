@@ -134,7 +134,7 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-black font-semibold text-center"
           >
-            🌱 Sequestering Carbon, 1 Brick @ a Time
+            🌱 2 Pounds of CO2 Sequestered
           </motion.div>
         </div>
 

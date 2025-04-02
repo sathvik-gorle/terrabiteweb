@@ -97,7 +97,7 @@ export default function Features() {
               <p className="text-4xl font-extrabold text-white/20 group-hover:text-white/10 transition duration-500 text-center px-2">
                 We&apos;ve diverted{" "}
                 <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
-                  <span>thousands</span>
+                  <span>0.02</span>
                   {/* Hover-Activated Video (replace with a Terrabite-specific clip) */}
                   <video
                     src="/assets/gif-biochar.mp4"
@@ -107,7 +107,7 @@ export default function Features() {
                     className="absolute bottom-full left-1/2 -translate-x-1/2 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"
                   />
                 </span>{" "}
-                of tons of waste
+                tons of waste
               </p>
             </div>
           </FeatureCard>
