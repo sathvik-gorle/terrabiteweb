@@ -97,7 +97,7 @@ export default function Features() {
               <p className="text-4xl font-extrabold text-white/20 group-hover:text-white/10 transition duration-500 text-center px-2">
                 We&apos;ve diverted{" "}
                 <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
-                  <span>0.004</span>
+                  <span>0.0115</span>
                   {/* Hover-Activated Video (replace with a Terrabite-specific clip) */}
                   <video
                     src="/assets/gif-biochar.mp4"
