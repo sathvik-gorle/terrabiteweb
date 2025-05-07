@@ -7,7 +7,7 @@ export default function CallToAction() {
   const animation = useRef<AnimationPlaybackControls>();
   const [scope, animate] = useAnimate();
 
-  // Initialize horizontal marquee animation
+  // initial anim start
   useEffect(() => {
     animation.current = animate(
       scope.current,
@@ -16,7 +16,7 @@ export default function CallToAction() {
     );
   }, [animate, scope]);
 
-  // Speed up or slow down marquee on hover
+  // ts pt used for changing speed based on hovered
   useEffect(() => {
     if (animation.current) {
       animation.current.speed = isHovered ? 0.5 : 1;
