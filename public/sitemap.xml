@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://terrabitenc.com/</loc>
+    <lastmod>2025-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Methodology Page -->
+  <url>
+    <loc>https://terrabitenc.com/methodology</loc>
+    <lastmod>2025-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Credits Page -->
+  <url>
+    <loc>https://terrabitenc.com/credits</loc>
+    <lastmod>2025-10-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Resource PDFs (update as PDFs are added) -->
+  <url>
+    <loc>https://terrabitenc.com/resources/numbers-methodology.pdf</loc>
+    <lastmod>2025-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/step-4-calculating-tam.pdf</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/terrabite-numbers-page.pdf</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/quantified-value-proposition.pdf</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/carbon-credits-verification.pdf</loc>
+    <lastmod>2025-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/concrete-production.pdf</loc>
+    <lastmod>2025-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://terrabitenc.com/resources/expanded-pitch-deck.pdf</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
+

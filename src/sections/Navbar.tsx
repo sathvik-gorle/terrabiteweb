@@ -10,9 +10,10 @@ import Button from "@/components/Button";
 import terrabiteLogo from "@/assets/images/logo.png";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "Our Approach", href: "#approach" },
-  { label: "Partners", href: "#partners" },
+  { label: "Case Studies", href: "#cases" },
+  { label: "Methodology", href: "/methodology" },
   { label: "FAQs", href: "#faqs" },
 ];
 
@@ -60,7 +61,7 @@ export default function Navbar() {
               >
                 {/* Left: Logo + Brand link */}
                 <div className="flex items-center gap-3">
-                  <Link href="#home" onClick={() => setMenuOpen(false)}>
+                  <Link href="/" onClick={() => setMenuOpen(false)}>
                     <Image
                       src={terrabiteLogo}
                       alt="Terrabite Logo"
@@ -68,7 +69,7 @@ export default function Navbar() {
                       priority
                     />
                   </Link>
-                  <Link href="#home" onClick={() => setMenuOpen(false)}>
+                  <Link href="/" onClick={() => setMenuOpen(false)}>
                     <span
                       className={twMerge(
                         "hidden sm:block font-semibold text-white cursor-pointer",
@@ -114,7 +115,7 @@ export default function Navbar() {
                       Contact Us
                     </Button>
                   </Link>
-                  <Link href="#quote" onClick={() => setMenuOpen(false)}>
+                  <Link href="#contact" onClick={() => setMenuOpen(false)}>
                     <Button
                       variant="primary"
                       className="hidden md:inline-flex text-sm whitespace-nowrap items-center"
@@ -211,7 +212,7 @@ export default function Navbar() {
                         Contact Us
                       </Button>
                     </Link>
-                    <Link href="#quote" onClick={() => setMenuOpen(false)}>
+                    <Link href="#contact" onClick={() => setMenuOpen(false)}>
                       <Button variant="primary" className="whitespace-nowrap">
                         Get a Quote
                       </Button>

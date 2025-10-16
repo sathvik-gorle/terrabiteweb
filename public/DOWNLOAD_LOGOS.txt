@@ -1,0 +1,38 @@
+SUPPLIER LOGO DOWNLOAD LINKS
+=============================
+
+Quick links to download supplier logos:
+
+1. PUBLIX
+   https://1000logos.net/publix-logo/
+   https://logos-world.net/publix-logo/
+
+2. HARRIS TEETER  
+   https://1000logos.net/harris-teeter-logo/
+   https://logos-world.net/harris-teeter-logo/
+
+3. FOOD LION
+   https://1000logos.net/food-lion-logo/
+   https://logos-world.net/food-lion-logo/
+
+4. DIVERT INC
+   Already have: /src/assets/images/divert.png ✓
+
+5. NCSSM
+   Already have: /src/assets/images/ncssm.png ✓
+
+6. NC GREEN BUSINESS
+   https://www.nccommerce.com/about-us/divisions-programs/nc-green-business-fund
+
+INSTRUCTIONS:
+1. Download PNG versions (transparent background preferred)
+2. Resize to approximately 200x100px
+3. Save to: /src/assets/images/
+   - publix.png
+   - harris-teeter.png
+   - food-lion.png
+   - local-farms.png
+   - nc-green.png
+   - triangle-restaurants.png
+
+The website will automatically update once files are added!
