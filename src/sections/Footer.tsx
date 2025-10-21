@@ -100,6 +100,9 @@ export default function Footer() {
               </a>
             </div>
           </div>
+          <div className="text-center mt-6 text-xs text-white/30">
+            Created by Sathvik Gorle
+          </div>
         </div>
       </div>
     </footer>
