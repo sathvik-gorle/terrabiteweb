@@ -21,6 +21,7 @@ interface PilotImage {
   alt: string;
   caption: string;
   link?: string;
+  layout?: 'horizontal' | 'vertical'; // Layout direction for dual images
 }
 
 const pilotImages: PilotImage[] = [
@@ -44,11 +45,13 @@ const pilotImages: PilotImage[] = [
     src: [charlottePilot3, charlottePilot4],
     alt: "Charlotte Temple Pilot - Additional Views",
     caption: "Charlotte Temple Pilot - Completed biochar concrete installation views",
+    layout: 'vertical',
   },
   {
     src: launchChapelHill,
     alt: "Launch Chapel Hill Presentation",
     caption: "Presenting at Launch Chapel Hill accelerator program",
+    link: "https://www.ncssm.edu/news/curiosity-sparks-entrepreneurial-passion-of-recent-graduate",
   },
   {
     src: firstBatch,
@@ -84,8 +87,8 @@ export default function PilotGallery() {
         >
           <div className="relative aspect-video bg-neutral-900 rounded-2xl overflow-hidden border border-white/10">
             {Array.isArray(pilotImages[selectedImage].src) ? (
-              // Dual image layout
-              <div className="grid grid-cols-2 gap-2 h-full p-2">
+              // Dual image layout (horizontal or vertical)
+              <div className={`grid ${pilotImages[selectedImage].layout === 'vertical' ? 'grid-rows-2' : 'grid-cols-2'} gap-2 h-full p-2`}>
                 {pilotImages[selectedImage].src.map((imgSrc, idx) => (
                   <div key={idx} className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
@@ -113,7 +116,7 @@ export default function PilotGallery() {
                 />
                 <div className="absolute inset-0 bg-lime-400/0 group-hover:bg-lime-400/10 transition-colors duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-lime-400 text-black px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                    <span>View at NCSSM</span>
+                    <span>{pilotImages[selectedImage].link?.includes('entrepreneurship.ncssm.edu') ? 'View at NCSSM E-Ship' : 'View Article at NCSSM'}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
@@ -209,8 +212,8 @@ export default function PilotGallery() {
                 }`}
               >
                 {Array.isArray(image.src) ? (
-                  // Dual thumbnail layout
-                  <div className="grid grid-cols-2 gap-1 h-full">
+                  // Dual thumbnail layout (matches main layout)
+                  <div className={`grid ${image.layout === 'vertical' ? 'grid-rows-2' : 'grid-cols-2'} gap-1 h-full`}>
                     {image.src.map((imgSrc, idx) => (
                       <div key={idx} className="relative w-full h-full">
                         <Image
