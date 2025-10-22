@@ -7,7 +7,7 @@ import Image from "next/image";
 
 // Pilot project photos showcasing the journey
 interface PilotImage {
-  src: string;
+  src: string | string[]; // Can be single image or array of images for dual layout
   alt: string;
   caption: string;
   link?: string;
@@ -15,43 +15,39 @@ interface PilotImage {
 
 const pilotImages: PilotImage[] = [
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+1",
+    src: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1200&h=800&fit=crop",
     alt: "Entrepreneurship Fair at NCSSM",
     caption: "Entrepreneurship Fair at NCSSM - Presenting Terrabite's biochar concrete concept",
     link: "https://entrepreneurship.ncssm.edu/home/e-ship-fair",
   },
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+2",
+    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop",
     alt: "Entrepreneurship Fair Team",
     caption: "Entrepreneurship Fair - Team showcasing biochar concrete samples",
   },
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+3",
-    alt: "Charlotte Pilot - Concrete Pour",
-    caption: "Charlotte Temple Pilot - Biochar concrete pour in progress",
+    src: [
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1590856029620-0448d7f90ede?w=600&h=800&fit=crop"
+    ],
+    alt: "Charlotte Temple Pilot - Multiple Views",
+    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete from different angles",
   },
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+4",
-    alt: "Charlotte Pilot - Installation",
-    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete installation",
+    src: [
+      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=800&fit=crop"
+    ],
+    alt: "Charlotte Temple Pilot - Additional Views",
+    caption: "Charlotte Temple Pilot - Completed biochar concrete installation views",
   },
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+5",
-    alt: "Charlotte Pilot - Finishing",
-    caption: "Charlotte Temple Pilot - Concrete finishing and surface preparation",
-  },
-  {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+6",
-    alt: "Charlotte Pilot - Completed Pour",
-    caption: "Charlotte Temple Pilot - Completed biochar concrete placement",
-  },
-  {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+7",
+    src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop",
     alt: "Launch Chapel Hill Presentation",
     caption: "Presenting at Launch Chapel Hill accelerator program",
   },
   {
-    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+8",
+    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop",
     alt: "First Batch of Biochar Concrete",
     caption: "First Successful Batch - Biochar concrete mixture validation",
   },
@@ -83,7 +79,23 @@ export default function PilotGallery() {
           className="max-w-5xl mx-auto mb-12"
         >
           <div className="relative aspect-video bg-neutral-900 rounded-2xl overflow-hidden border border-white/10">
-            {pilotImages[selectedImage].link ? (
+            {Array.isArray(pilotImages[selectedImage].src) ? (
+              // Dual image layout
+              <div className="grid grid-cols-2 gap-2 h-full p-2">
+                {pilotImages[selectedImage].src.map((imgSrc, idx) => (
+                  <div key={idx} className="relative w-full h-full rounded-lg overflow-hidden">
+                    <Image
+                      src={imgSrc}
+                      alt={`${pilotImages[selectedImage].alt} - View ${idx + 1}`}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : pilotImages[selectedImage].link ? (
+              // Single image with link
               <a 
                 href={pilotImages[selectedImage].link} 
                 target="_blank" 
@@ -91,7 +103,7 @@ export default function PilotGallery() {
                 className="block relative w-full h-full group"
               >
                 <Image
-                  src={pilotImages[selectedImage].src}
+                  src={pilotImages[selectedImage].src as string}
                   alt={pilotImages[selectedImage].alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -107,8 +119,9 @@ export default function PilotGallery() {
                 </div>
               </a>
             ) : (
+              // Single image without link
               <Image
-                src={pilotImages[selectedImage].src}
+                src={pilotImages[selectedImage].src as string}
                 alt={pilotImages[selectedImage].alt}
                 fill
                 className="object-cover"
@@ -194,13 +207,30 @@ export default function PilotGallery() {
                     : "border-white/10 hover:border-white/30"
                 }`}
               >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
+                {Array.isArray(image.src) ? (
+                  // Dual thumbnail layout
+                  <div className="grid grid-cols-2 gap-1 h-full">
+                    {image.src.map((imgSrc, idx) => (
+                      <div key={idx} className="relative w-full h-full">
+                        <Image
+                          src={imgSrc}
+                          alt={`${image.alt} thumbnail ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                )}
                 {selectedImage === index && (
                   <div className="absolute inset-0 bg-lime-400/20 backdrop-blur-[1px]" />
                 )}
