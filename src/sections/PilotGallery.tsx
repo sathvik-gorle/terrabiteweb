@@ -37,15 +37,24 @@ const pilotImages: PilotImage[] = [
     caption: "Entrepreneurship Fair - Team showcasing biochar concrete samples",
   },
   {
-    src: [charlottePilot1, charlottePilot2],
-    alt: "Charlotte Temple Pilot - Multiple Views",
-    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete from different angles",
+    src: charlottePilot1,
+    alt: "Charlotte Temple Pilot - View 1",
+    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete installation (View 1)",
   },
   {
-    src: [charlottePilot3, charlottePilot4],
-    alt: "Charlotte Temple Pilot - Additional Views",
-    caption: "Charlotte Temple Pilot - Completed biochar concrete installation views",
-    layout: 'vertical',
+    src: charlottePilot2,
+    alt: "Charlotte Temple Pilot - View 2",
+    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete installation (View 2)",
+  },
+  {
+    src: charlottePilot3,
+    alt: "Charlotte Temple Pilot - View 3",
+    caption: "Charlotte Temple Pilot - Completed biochar concrete installation (View 3)",
+  },
+  {
+    src: charlottePilot4,
+    alt: "Charlotte Temple Pilot - View 4",
+    caption: "Charlotte Temple Pilot - Completed biochar concrete installation (View 4)",
   },
   {
     src: launchChapelHill,
