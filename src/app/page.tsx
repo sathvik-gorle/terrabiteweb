@@ -2,10 +2,10 @@ import Navbar from "@/sections/Navbar";
 import Hero from "@/sections/Hero";
 import MetricsBar from "@/sections/MetricsBar";
 import HowItWorks from "@/sections/HowItWorks";
+import PilotGallery from "@/sections/PilotGallery";
 import PerformanceCompliance from "@/sections/PerformanceCompliance";
 import CarbonCredits from "@/sections/CarbonCredits";
 import MiniCases from "@/sections/MiniCases";
-import PilotGallery from "@/sections/PilotGallery";
 import LogoTicker from "@/sections/LogoTicker";
 import Faqs from "@/sections/Faqs";
 import ContactRFQ from "@/sections/ContactRFQ";
@@ -18,10 +18,10 @@ export default function Home() {
       <Hero />
       <MetricsBar />
       <HowItWorks />
+      <PilotGallery />
       <PerformanceCompliance />
       <CarbonCredits />
       <MiniCases />
-      <PilotGallery />
       <LogoTicker />
       <Faqs />
       <ContactRFQ />

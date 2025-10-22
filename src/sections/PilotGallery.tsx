@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Tag from "@/components/Tags";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 // Import pilot photos (save your images to /src/assets/images/pilot/ with these names)
 import entrepreneurshipFairPresentation from "@/assets/images/pilot/entrepreneurship-fair-presentation.jpg";
@@ -17,7 +17,7 @@ import firstBatch from "@/assets/images/pilot/first-batch-concrete.jpg";
 
 // Pilot project photos showcasing the journey
 interface PilotImage {
-  src: string | string[]; // Can be single image or array of images for dual layout
+  src: string | StaticImageData | (string | StaticImageData)[]; // Can be single image or array of images for dual layout
   alt: string;
   caption: string;
   link?: string;

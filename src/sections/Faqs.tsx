@@ -89,7 +89,7 @@ export default function AdvancedFaq() {
   };
 
   return (
-    <section className="py-24 bg-black text-white">
+    <section className="py-24 bg-black text-white" id="faqs">
       <div className="container max-w-3xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold">

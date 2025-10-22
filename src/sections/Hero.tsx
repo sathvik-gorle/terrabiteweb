@@ -175,7 +175,7 @@ export default function Hero() {
               Get a pilot quote
             </Button>
           </a>
-          <a href="#methodology">
+          <a href="/methodology">
             <Button
               variant="secondary"
               className="whitespace-nowrap px-8 py-3 text-base"
