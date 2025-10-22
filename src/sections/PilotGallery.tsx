@@ -5,6 +5,16 @@ import { useState } from "react";
 import Tag from "@/components/Tags";
 import Image from "next/image";
 
+// Import pilot photos (save your images to /src/assets/images/pilot/ with these names)
+import entrepreneurshipFairPresentation from "@/assets/images/pilot/entrepreneurship-fair-presentation.jpg";
+import entrepreneurshipFairTeam from "@/assets/images/pilot/entrepreneurship-fair-team.jpg";
+import charlottePilot1 from "@/assets/images/pilot/charlotte-pilot-1.jpg";
+import charlottePilot2 from "@/assets/images/pilot/charlotte-pilot-2.jpg";
+import charlottePilot3 from "@/assets/images/pilot/charlotte-pilot-3.jpg";
+import charlottePilot4 from "@/assets/images/pilot/charlotte-pilot-4.jpg";
+import launchChapelHill from "@/assets/images/pilot/launch-chapel-hill-presentation.jpg";
+import firstBatch from "@/assets/images/pilot/first-batch-concrete.jpg";
+
 // Pilot project photos showcasing the journey
 interface PilotImage {
   src: string | string[]; // Can be single image or array of images for dual layout
@@ -15,39 +25,33 @@ interface PilotImage {
 
 const pilotImages: PilotImage[] = [
   {
-    src: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1200&h=800&fit=crop",
+    src: entrepreneurshipFairPresentation,
     alt: "Entrepreneurship Fair at NCSSM",
     caption: "Entrepreneurship Fair at NCSSM - Presenting Terrabite's biochar concrete concept",
     link: "https://entrepreneurship.ncssm.edu/home/e-ship-fair",
   },
   {
-    src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop",
+    src: entrepreneurshipFairTeam,
     alt: "Entrepreneurship Fair Team",
     caption: "Entrepreneurship Fair - Team showcasing biochar concrete samples",
   },
   {
-    src: [
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1590856029620-0448d7f90ede?w=600&h=800&fit=crop"
-    ],
+    src: [charlottePilot1, charlottePilot2],
     alt: "Charlotte Temple Pilot - Multiple Views",
     caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete from different angles",
   },
   {
-    src: [
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=800&fit=crop",
-      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=800&fit=crop"
-    ],
+    src: [charlottePilot3, charlottePilot4],
     alt: "Charlotte Temple Pilot - Additional Views",
     caption: "Charlotte Temple Pilot - Completed biochar concrete installation views",
   },
   {
-    src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop",
+    src: launchChapelHill,
     alt: "Launch Chapel Hill Presentation",
     caption: "Presenting at Launch Chapel Hill accelerator program",
   },
   {
-    src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop",
+    src: firstBatch,
     alt: "First Batch of Biochar Concrete",
     caption: "First Successful Batch - Biochar concrete mixture validation",
   },
@@ -89,7 +93,6 @@ export default function PilotGallery() {
                       alt={`${pilotImages[selectedImage].alt} - View ${idx + 1}`}
                       fill
                       className="object-cover"
-                      unoptimized
                     />
                   </div>
                 ))}
@@ -107,7 +110,6 @@ export default function PilotGallery() {
                   alt={pilotImages[selectedImage].alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  unoptimized
                 />
                 <div className="absolute inset-0 bg-lime-400/0 group-hover:bg-lime-400/10 transition-colors duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-lime-400 text-black px-4 py-2 rounded-full font-semibold flex items-center gap-2">
@@ -125,7 +127,6 @@ export default function PilotGallery() {
                 alt={pilotImages[selectedImage].alt}
                 fill
                 className="object-cover"
-                unoptimized
               />
             )}
             
@@ -217,7 +218,6 @@ export default function PilotGallery() {
                           alt={`${image.alt} thumbnail ${idx + 1}`}
                           fill
                           className="object-cover"
-                          unoptimized
                         />
                       </div>
                     ))}
@@ -228,7 +228,6 @@ export default function PilotGallery() {
                     alt={image.alt}
                     fill
                     className="object-cover"
-                    unoptimized
                   />
                 )}
                 {selectedImage === index && (
