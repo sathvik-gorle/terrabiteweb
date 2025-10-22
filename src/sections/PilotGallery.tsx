@@ -5,37 +5,55 @@ import { useState } from "react";
 import Tag from "@/components/Tags";
 import Image from "next/image";
 
-// Placeholder images - replace these with actual pilot photos
-const pilotImages = [
+// Pilot project photos showcasing the journey
+interface PilotImage {
+  src: string;
+  alt: string;
+  caption: string;
+  link?: string;
+}
+
+const pilotImages: PilotImage[] = [
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+1",
-    alt: "Entrepreneurship Fair",
-    caption: "Entrepreneurship Fair - Presenting the biochar concrete concept",
+    alt: "Entrepreneurship Fair at NCSSM",
+    caption: "Entrepreneurship Fair at NCSSM - Presenting Terrabite's biochar concrete concept",
+    link: "https://entrepreneurship.ncssm.edu/home/e-ship-fair",
   },
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+2",
-    alt: "Mixing Initial Batches",
-    caption: "Mixing Initial Batches - First experiments with biochar integration",
+    alt: "Entrepreneurship Fair Team",
+    caption: "Entrepreneurship Fair - Team showcasing biochar concrete samples",
   },
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+3",
-    alt: "First Successful Batch",
-    caption: "First Successful Batch - Validated biochar concrete formula",
+    alt: "Charlotte Pilot - Concrete Pour",
+    caption: "Charlotte Temple Pilot - Biochar concrete pour in progress",
   },
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+4",
-    alt: "Pilot 1 - Charlotte, NC",
-    caption: "Pilot 1 - 31,000 lbs concrete pour in Charlotte, NC",
+    alt: "Charlotte Pilot - Installation",
+    caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete installation",
   },
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+5",
-    alt: "Pilot 1 - Installation",
-    caption: "Pilot 1 - Biochar concrete placement and finishing",
+    alt: "Charlotte Pilot - Finishing",
+    caption: "Charlotte Temple Pilot - Concrete finishing and surface preparation",
   },
   {
     src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+6",
+    alt: "Charlotte Pilot - Completed Pour",
+    caption: "Charlotte Temple Pilot - Completed biochar concrete placement",
+  },
+  {
+    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+7",
     alt: "Launch Chapel Hill Presentation",
     caption: "Presenting at Launch Chapel Hill accelerator program",
+  },
+  {
+    src: "https://placehold.co/1200x800/1a1a1a/lime?text=Photo+8",
+    alt: "First Batch of Biochar Concrete",
+    caption: "First Successful Batch - Biochar concrete mixture validation",
   },
 ];
 
@@ -65,13 +83,38 @@ export default function PilotGallery() {
           className="max-w-5xl mx-auto mb-12"
         >
           <div className="relative aspect-video bg-neutral-900 rounded-2xl overflow-hidden border border-white/10">
-            <Image
-              src={pilotImages[selectedImage].src}
-              alt={pilotImages[selectedImage].alt}
-              fill
-              className="object-cover"
-              unoptimized // Since we're using placeholder images
-            />
+            {pilotImages[selectedImage].link ? (
+              <a 
+                href={pilotImages[selectedImage].link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block relative w-full h-full group"
+              >
+                <Image
+                  src={pilotImages[selectedImage].src}
+                  alt={pilotImages[selectedImage].alt}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-lime-400/0 group-hover:bg-lime-400/10 transition-colors duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-lime-400 text-black px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                    <span>View at NCSSM</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            ) : (
+              <Image
+                src={pilotImages[selectedImage].src}
+                alt={pilotImages[selectedImage].alt}
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            )}
             
             {/* Navigation Arrows */}
             <button
