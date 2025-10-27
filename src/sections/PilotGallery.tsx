@@ -37,6 +37,12 @@ const pilotImages: PilotImage[] = [
     caption: "Entrepreneurship Fair - Team showcasing biochar concrete samples",
   },
   {
+    src: launchChapelHill,
+    alt: "Launch Chapel Hill Presentation",
+    caption: "Presenting at Launch Chapel Hill accelerator program",
+    link: "https://www.ncssm.edu/news/curiosity-sparks-entrepreneurial-passion-of-recent-graduate",
+  },
+  {
     src: charlottePilot1,
     alt: "Charlotte Temple Pilot - View 1",
     caption: "Charlotte Temple Pilot - 31,000 lbs biochar concrete installation (View 1)",
@@ -55,12 +61,6 @@ const pilotImages: PilotImage[] = [
     src: charlottePilot4,
     alt: "Charlotte Temple Pilot - View 4",
     caption: "Charlotte Temple Pilot - Completed biochar concrete installation (View 4)",
-  },
-  {
-    src: launchChapelHill,
-    alt: "Launch Chapel Hill Presentation",
-    caption: "Presenting at Launch Chapel Hill accelerator program",
-    link: "https://www.ncssm.edu/news/curiosity-sparks-entrepreneurial-passion-of-recent-graduate",
   },
   {
     src: firstBatch,
